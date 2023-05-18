@@ -15,7 +15,7 @@ if (global.window) {
 export default function Home() {
   return (
     <main>
-      <title>MD2HTML</title>
+      <title>MDPRINT</title>
 
       <ErrorBoundary fallback={<div></div>} onError={toastError}>
         <StateContext.Provider value={state}>
