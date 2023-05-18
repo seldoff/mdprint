@@ -18,3 +18,5 @@ export function assertExists2<T>(
 ): asserts value is T {
   assert(value !== undefined && value !== null, message)
 }
+
+export const isDevEnv = process.env.NODE_ENV !== "production"
