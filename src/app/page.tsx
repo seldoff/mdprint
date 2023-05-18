@@ -73,7 +73,6 @@ if (global.window) {
 }
 
 // TODO monospaced font in editor
-// TODO Fix layout with long text
 
 export default function Home() {
   return (
@@ -82,7 +81,7 @@ export default function Home() {
 
       <ErrorBoundary fallback={<div></div>} onError={toastError}>
         <StateContext.Provider value={state}>
-          <div className="flex h-screen overflow-y-scroll">
+          <div className="flex h-screen p-0.5">
             <div className="flex-1">
               <Editor />
             </div>
@@ -115,7 +114,7 @@ const Editor = () => {
     return () => div.removeEventListener("input", debounced)
   }, [])
 
-  return <div ref={ref} className="h-full p-1 bg-emerald-100" contentEditable={true} />
+  return <div ref={ref} className="h-full overflow-y-scroll p-1" contentEditable={true} />
 }
 
 const Preview = () => {
@@ -134,7 +133,7 @@ const Preview = () => {
   }, [renderingMd, state])
 
   return (
-    <div className={cn("h-full p-1 markdown-body", { "opacity-30": loading })}>
+    <div className={cn("h-full overflow-y-scroll p-1 markdown-body", { "opacity-30": loading })}>
       <div dangerouslySetInnerHTML={{ __html: renderedMd }}></div>
     </div>
   )
