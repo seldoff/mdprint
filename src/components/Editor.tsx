@@ -24,7 +24,7 @@ export const Editor = () => {
   return (
     <div
       ref={ref}
-      className="h-full overflow-y-scroll p-1 text-sm"
+      className="h-full overflow-y-scroll p-3 text-sm focus:outline-none"
       style={{
         fontFamily: '"SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace',
       }}

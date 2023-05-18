@@ -5,6 +5,7 @@ import { Editor } from "@/components/Editor"
 import { toastError } from "@/components/toast"
 import { state, StateContext } from "@/state"
 import { Preview } from "@/components/Preview"
+import { Toolbar } from "@/components/Toolbar"
 
 if (global.window) {
   window.addEventListener("error", (e) => toastError(e.message))
@@ -19,13 +20,17 @@ export default function Home() {
 
       <ErrorBoundary fallback={<div></div>} onError={toastError}>
         <StateContext.Provider value={state}>
-          <div className="flex h-screen p-0.5">
-            <div className="flex-1 noprint">
-              <Editor />
+          <div className="flex flex-col h-screen">
+            <div className="border-b noprint">
+              <Toolbar />
             </div>
-            <div className="w-0.5 bg-gray-400 noprint" />
-            <div className="flex-1">
-              <Preview />
+            <div className="flex flex-1">
+              <div className="flex-1 noprint border-r">
+                <Editor />
+              </div>
+              <div className="flex-1">
+                <Preview />
+              </div>
             </div>
           </div>
         </StateContext.Provider>

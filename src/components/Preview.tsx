@@ -19,7 +19,7 @@ export const Preview = () => {
   }, [renderingMd, state])
 
   return (
-    <div className={cn("h-full overflow-y-scroll p-1 markdown-body", { "opacity-30": loading })}>
+    <div className={cn("h-full overflow-y-scroll p-3 markdown-body", { "opacity-30": loading })}>
       <div dangerouslySetInnerHTML={{ __html: renderedMd }}></div>
     </div>
   )
