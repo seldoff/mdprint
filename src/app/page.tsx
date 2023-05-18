@@ -20,10 +20,10 @@ export default function Home() {
       <ErrorBoundary fallback={<div></div>} onError={toastError}>
         <StateContext.Provider value={state}>
           <div className="flex h-screen p-0.5">
-            <div className="flex-1">
+            <div className="flex-1 noprint">
               <Editor />
             </div>
-            <div className="w-0.5 bg-gray-400" />
+            <div className="w-0.5 bg-gray-400 noprint" />
             <div className="flex-1">
               <Preview />
             </div>
