@@ -8,6 +8,7 @@ import { useStore } from "@nanostores/react"
 import cn from "classnames"
 import toast, { toastConfig } from "react-simple-toasts"
 import { ErrorBoundary } from "react-error-boundary"
+import "./md.css"
 
 type State = {
   md: string
@@ -71,6 +72,9 @@ if (global.window) {
   window.addEventListener("unhandledrejection", (e) => toastError(e.reason))
 }
 
+// TODO monospaced font in editor
+// TODO Fix layout with long text
+
 export default function Home() {
   return (
     <main>
@@ -78,7 +82,7 @@ export default function Home() {
 
       <ErrorBoundary fallback={<div></div>} onError={toastError}>
         <StateContext.Provider value={state}>
-          <div className="flex h-screen">
+          <div className="flex h-screen overflow-y-scroll">
             <div className="flex-1">
               <Editor />
             </div>
@@ -130,7 +134,7 @@ const Preview = () => {
   }, [renderingMd, state])
 
   return (
-    <div className={cn("h-full p-1 bg-fuchsia-100", { "opacity-30": loading })}>
+    <div className={cn("h-full p-1 markdown-body", { "opacity-30": loading })}>
       <div dangerouslySetInnerHTML={{ __html: renderedMd }}></div>
     </div>
   )
