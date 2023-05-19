@@ -8,7 +8,11 @@ export const Preview = () => {
 
   return (
     <div className="h-full overflow-y-scroll p-3 markdown-body">
-      <div dangerouslySetInnerHTML={{ __html: renderedMd }}></div>
+      {renderedMd === "" ? (
+        <span className="text-gray-400">Rendered Markdown will appear here</span>
+      ) : (
+        <div dangerouslySetInnerHTML={{ __html: renderedMd }} />
+      )}
     </div>
   )
 }

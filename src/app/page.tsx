@@ -3,7 +3,7 @@ import { ErrorBoundary } from "react-error-boundary"
 import "./md.css"
 import { Editor } from "@/components/Editor"
 import { toastError } from "@/components/toast"
-import { longRenderingMd, state, StateContext } from "@/state"
+import { renderingMdTooLong, state, StateContext } from "@/state"
 import { Preview } from "@/components/Preview"
 import { useStore } from "@nanostores/react"
 import { Spinner } from "@/components/Spinner"
@@ -16,7 +16,7 @@ if (global.window) {
 
 // noinspection JSUnusedGlobalSymbols
 export default function Home() {
-  const longRendering = useStore(longRenderingMd)
+  const longRendering = useStore(renderingMdTooLong)
 
   return (
     <main>

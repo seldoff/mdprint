@@ -12,7 +12,7 @@ export type State = {
 export const state = map<State>({ md: "", renderedMd: "", renderingMd: false })
 export const StateContext = createContext<MapStore<State>>(state)
 
-export const longRenderingMd = atom(false)
+export const renderingMdTooLong = atom(false)
 
 state.subscribe((s, changedKey) => {
   if (changedKey !== "renderingMd") {
@@ -21,14 +21,14 @@ state.subscribe((s, changedKey) => {
 
   if (s.renderingMd) {
     setTimeout(() => {
-      state.get().renderingMd && longRenderingMd.set(true)
-    }, 1000)
+      state.get().renderingMd && renderingMdTooLong.set(true)
+    }, 500)
   } else {
-    longRenderingMd.set(false)
+    renderingMdTooLong.set(false)
   }
 })
 
-export async function processNewMd(md: string) {
+export async function processMd(md: string) {
   state.setKey("md", md)
   state.setKey("renderingMd", true)
 
