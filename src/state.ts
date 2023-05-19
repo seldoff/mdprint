@@ -1,6 +1,5 @@
-import { atom, WritableAtom } from "nanostores"
+import { atom, map, MapStore } from "nanostores"
 import { createContext } from "react"
-import { isDevEnv } from "@/utils"
 import ky from "ky"
 import { toastError } from "@/components/toast"
 
@@ -10,16 +9,28 @@ export type State = {
   renderedMd: string
 }
 
-export const state = atom<State>({ md: "", renderedMd: "", renderingMd: false })
-export const StateContext = createContext<WritableAtom<State>>(state)
+export const state = map<State>({ md: "", renderedMd: "", renderingMd: false })
+export const StateContext = createContext<MapStore<State>>(state)
 
-function setState(update: Partial<State>) {
-  state.set({ ...state.get(), ...update })
-  isDevEnv && console.log("State updated", update)
-}
+export const longRenderingMd = atom(false)
+
+state.subscribe((s, changedKey) => {
+  if (changedKey !== "renderingMd") {
+    return
+  }
+
+  if (s.renderingMd) {
+    setTimeout(() => {
+      state.get().renderingMd && longRenderingMd.set(true)
+    }, 1000)
+  } else {
+    longRenderingMd.set(false)
+  }
+})
 
 export async function processNewMd(md: string) {
-  setState({ md, renderingMd: true })
+  state.setKey("md", md)
+  state.setKey("renderingMd", true)
 
   try {
     const renderedMd = await ky
@@ -33,11 +44,11 @@ export async function processNewMd(md: string) {
       })
       .text()
 
-    setState({ renderedMd })
+    state.setKey("renderedMd", renderedMd)
   } catch (e) {
     toastError("Can't render markdown at the moment: GitHub returned an error.")
     console.error(e)
   } finally {
-    setState({ renderingMd: false })
+    state.setKey("renderingMd", false)
   }
 }
