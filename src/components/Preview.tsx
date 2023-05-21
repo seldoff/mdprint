@@ -7,7 +7,7 @@ export const Preview = () => {
   const { renderedMd } = useStore(state)
 
   return (
-    <div className="h-full overflow-y-scroll p-3 markdown-body">
+    <div className="h-full p-3 markdown-body">
       {renderedMd === "" ? (
         <span className="text-gray-400">Rendered Markdown will appear here</span>
       ) : (

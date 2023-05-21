@@ -1,9 +1,9 @@
 import { useContext, useEffect, useRef, useState } from "react"
-import { assert, assertExists } from "@/utils"
+import { assertExists } from "@/utils"
 import debounce from "lodash/debounce"
 import { processMd, StateContext } from "@/state"
-import { useStore } from "@nanostores/react"
 import cn from "classnames"
+import { useStore } from "@nanostores/react"
 
 const debouncedProcessMd = debounce(processMd, 1000)
 
@@ -12,17 +12,15 @@ export const Editor = () => {
   const { md } = useStore(state)
   const ref = useRef<HTMLDivElement>(null)
 
+  const [editorContentInitialized, setEditorContentInitialized] = useState(false)
   const [hasFocus, setHasFocus] = useState(false)
-  const [hasContent, setHasContent] = useState(false)
-  const showPlaceholder = !hasFocus && !hasContent
-
-  useEffect(() => {
-    assert(md === "", "md is not empty on mount")
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  const [hasContent, setHasContent] = useState(() => md.length > 0)
+  const showPlaceholder = editorContentInitialized && !hasFocus && !hasContent
 
   useEffect(() => {
     const div = assertExists(ref.current)
+    div.innerText = state.get().md
+    setEditorContentInitialized(true)
 
     const handleInput = () => {
       const content = div.innerText.trim()
@@ -32,7 +30,7 @@ export const Editor = () => {
 
     div.addEventListener("input", handleInput)
     return () => div.removeEventListener("input", handleInput)
-  }, [])
+  }, [state])
 
   return (
     <>
