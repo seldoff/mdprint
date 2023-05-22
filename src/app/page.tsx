@@ -33,9 +33,9 @@ export default function Home() {
 
       <ErrorBoundary fallback={<div></div>} onError={toastError}>
         <StateContext.Provider value={state}>
-          <div className="flex h-screen">
-            <div className="flex-1 flex flex-col noprint border-r border-r-gray-500">
-              <div className="text-lg text-gray-700 bg-blue-100 p-2 pl-4 border-b flex gap-4 items-center">
+          <div className="flex flex-col md:flex-row h-screen">
+            <div className="basis-1/2 flex-none min-h-0 flex flex-col border-r border-r-gray-500 noprint">
+              <div className="min-h-[4rem] text-lg text-gray-700 bg-blue-100 p-2 pl-4 border-b flex gap-4 items-center">
                 <span>Markdown</span>
                 <FilePicker onFilePicked={handleFile}>
                   <Button>Open File</Button>
@@ -43,12 +43,13 @@ export default function Home() {
               </div>
               <Editor key={editorKey} />
             </div>
-            <div className="flex-1 flex flex-col">
-              <div className="bg-blue-100 p-2 pl-4 border-b noprint flex gap-4 items-center">
+
+            <div className="basis-1/2 flex-none min-h-0 flex flex-col">
+              <div className="min-h-[4rem] bg-blue-100 p-2 pl-4 border-b flex gap-4 items-center noprint">
                 <div className="text-lg text-gray-700">Preview</div>
                 {longRendering ? <Spinner /> : null}
               </div>
-              <div className={cn({ "opacity-30": longRendering })}>
+              <div className={cn("overflow-y-scroll", { "opacity-30": longRendering })}>
                 <Preview />
               </div>
             </div>
