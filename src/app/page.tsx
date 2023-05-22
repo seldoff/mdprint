@@ -34,8 +34,18 @@ export default function Home() {
       <ErrorBoundary fallback={<div></div>} onError={toastError}>
         <StateContext.Provider value={state}>
           <div className="flex flex-col md:flex-row h-screen">
-            <div className="basis-1/2 flex-none min-h-0 flex flex-col border-r border-r-gray-500 noprint">
-              <div className="min-h-[4rem] text-lg text-gray-700 bg-blue-100 p-2 pl-4 border-b flex gap-4 items-center">
+            <div
+              className={cn(
+                "basis-1/2 flex-none min-h-0",
+                "flex flex-col border-r border-r-gray-500 noprint",
+              )}
+            >
+              <div
+                className={cn(
+                  "flex gap-4 items-center",
+                  "min-h-[4rem] text-lg text-gray-700 bg-blue-100 p-2 pl-4 border-b",
+                )}
+              >
                 <span>Markdown</span>
                 <FilePicker onFilePicked={handleFile}>
                   <Button>Open File</Button>
@@ -44,8 +54,13 @@ export default function Home() {
               <Editor key={editorKey} />
             </div>
 
-            <div className="basis-1/2 flex-none min-h-0 flex flex-col">
-              <div className="min-h-[4rem] bg-blue-100 p-2 pl-4 border-b flex gap-4 items-center noprint">
+            <div className={cn("basis-1/2 flex-none min-h-0", "flex flex-col")}>
+              <div
+                className={cn(
+                  "flex gap-4 items-center",
+                  "min-h-[4rem] bg-blue-100 p-2 pl-4 border-b noprint",
+                )}
+              >
                 <div className="text-lg text-gray-700">Preview</div>
                 {longRendering ? <Spinner /> : null}
               </div>
