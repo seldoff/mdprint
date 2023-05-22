@@ -10,8 +10,9 @@ import { Spinner } from "@/components/Spinner"
 import cn from "classnames"
 import { Button, FilePicker } from "@/components/Button"
 import { useCallback, useState } from "react"
+import { isServer } from "@/utils"
 
-if (global.window) {
+if (!isServer) {
   window.addEventListener("error", (e) => toastError(e.message))
   window.addEventListener("unhandledrejection", (e) => toastError(e.reason))
 }

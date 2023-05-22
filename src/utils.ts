@@ -20,3 +20,4 @@ export function assertExists2<T>(
 }
 
 export const isDevEnv = process.env.NODE_ENV !== "production"
+export const isServer = typeof window === "undefined"
