@@ -40,7 +40,7 @@ export async function processMd(md: string) {
           //Authorization: `Bearer1: ${process.env["GH_API_TOKEN"]}`,
           Accept: "application/vnd.github+json",
         },
-        json: { text: md },
+        json: { text: md.trim() },
       })
       .text()
 
