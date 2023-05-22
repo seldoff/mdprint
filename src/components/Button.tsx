@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, FC, PropsWithChildren, useCallback, useRef } from "react"
+import { ButtonHTMLAttributes, FC, PropsWithChildren, useCallback, useRef, useState } from "react"
 import cn from "classnames"
 import { assertExists } from "@/utils"
 
@@ -20,6 +20,7 @@ export const FilePicker: FC<PropsWithChildren<{ onFilePicked: (content: string) 
   onFilePicked,
   children,
 }) => {
+  const [value, setValue] = useState("")
   const ref = useRef<HTMLInputElement>(null)
 
   const handleClick = useCallback(() => {
@@ -33,13 +34,14 @@ export const FilePicker: FC<PropsWithChildren<{ onFilePicked: (content: string) 
     if (files !== null && files.length > 0) {
       const content = await files[0].text()
       onFilePicked(content)
+      setValue("")
     }
   }, [onFilePicked])
 
   return (
     <>
       <div onClick={handleClick}>{children}</div>
-      <input type="file" ref={ref} className="hidden" onChange={handleChange} />
+      <input type="file" ref={ref} value={value} className="hidden" onChange={handleChange} />
     </>
   )
 }
