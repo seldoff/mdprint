@@ -62,7 +62,13 @@ export default function Home() {
                 )}
               >
                 <div className="text-lg text-gray-700">Preview</div>
-                {longRendering ? <Spinner /> : null}
+                {longRendering ? (
+                  <Spinner />
+                ) : (
+                  <Button className="min-w-[4rem]" onClick={window.print}>
+                    Print
+                  </Button>
+                )}
               </div>
               <div className={cn("overflow-y-scroll", { "opacity-30": longRendering })}>
                 <Preview />

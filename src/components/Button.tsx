@@ -3,13 +3,16 @@ import cn from "classnames"
 import { assertExists } from "@/utils"
 
 export const Button: FC<ButtonHTMLAttributes<HTMLButtonElement>> = (props) => {
+  const { className: _, ...propsWoCN } = props
+
   return (
     <button
       className={cn(
+        props.className,
         "text-sm text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700",
         "px-3 py-1 cursor-pointer rounded",
       )}
-      {...props}
+      {...propsWoCN}
     >
       {props.children}
     </button>
