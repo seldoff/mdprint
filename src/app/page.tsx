@@ -43,10 +43,11 @@ export default function Home() {
               <div
                 className={cn(
                   "flex gap-4 items-center",
-                  "min-h-[4rem] text-lg text-gray-700 bg-blue-100 p-2 pl-4 border-b",
+                  "min-h-[4rem] bg-blue-100 p-2 px-4 border-b",
                 )}
               >
-                <span>Markdown</span>
+                <span className="grow text-xl text-gray-700 uppercase">Markdown</span>
+
                 <FilePicker onFilePicked={handleFile}>
                   <Button>Open File</Button>
                 </FilePicker>
@@ -58,17 +59,17 @@ export default function Home() {
               <div
                 className={cn(
                   "flex gap-4 items-center",
-                  "min-h-[4rem] bg-blue-100 p-2 pl-4 border-b noprint",
+                  "min-h-[4rem] bg-blue-100 p-2 px-4 border-b noprint",
                 )}
               >
-                <div className="text-lg text-gray-700">Preview</div>
-                {longRendering ? (
-                  <Spinner />
-                ) : (
-                  <Button className="min-w-[4rem]" onClick={window.print}>
-                    Print
-                  </Button>
-                )}
+                <div className="grow">
+                  <span className="text-xl text-gray-700 uppercase">Preview</span>
+                  {longRendering ? <Spinner /> : null}
+                </div>
+
+                <Button className="min-w-[4rem]" onClick={window.print}>
+                  Print
+                </Button>
               </div>
               <div className={cn("overflow-y-scroll", { "opacity-30": longRendering })}>
                 <Preview />

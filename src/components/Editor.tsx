@@ -16,11 +16,8 @@ export const Editor = () => {
   return (
     <textarea
       placeholder="Enter Markdown here"
-      className="h-full w-full p-3 text-sm focus:outline-none"
-      style={{
-        resize: "none",
-        fontFamily: '"SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace',
-      }}
+      className="h-full w-full p-3 text-sm font-mono focus:outline-none"
+      style={{ resize: "none" }}
       value={content}
       onChange={handleChange}
     />
