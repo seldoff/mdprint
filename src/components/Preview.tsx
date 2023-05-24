@@ -12,7 +12,6 @@ export const Preview = () => {
         // gray-400+opacity to match Editor's placeholder color
         <span className="text-gray-400 opacity-80">Rendered Markdown will appear here</span>
       ) : (
-        // TODO sanitize
         <div dangerouslySetInnerHTML={{ __html: renderedMd }} />
       )}
     </div>

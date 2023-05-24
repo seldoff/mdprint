@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`sanitize 1`] = `
+"<h1><a href="#title-level-1" aria-hidden="true" class="anchor" id="user-content-title-level-1"><span class="octicon octicon-link" aria-hidden="true"></span></a>Title Level 1</h1>
+<h2><a href="#title-level-2" aria-hidden="true" class="anchor" id="user-content-title-level-2"><span class="octicon octicon-link" aria-hidden="true"></span></a>Title Level 2</h2>
+<h3><a href="#title-level-3" aria-hidden="true" class="anchor" id="user-content-title-level-3"><span class="octicon octicon-link" aria-hidden="true"></span></a>Title Level 3</h3>
+<h4><a href="#title-level-4" aria-hidden="true" class="anchor" id="user-content-title-level-4"><span class="octicon octicon-link" aria-hidden="true"></span></a>Title Level 4</h4>
+<h5><a href="#title-level-5" aria-hidden="true" class="anchor" id="user-content-title-level-5"><span class="octicon octicon-link" aria-hidden="true"></span></a>Title Level 5</h5>
+<h6><a href="#title-level-6" aria-hidden="true" class="anchor" id="user-content-title-level-6"><span class="octicon octicon-link" aria-hidden="true"></span></a>Title Level 6</h6>
+<p><strong>Bold Text</strong></p>
+<p><em>Italic Text</em></p>
+<p><del>Strikethrough</del></p>
+<p><strong><em>Bold and Italic</em></strong></p>
+<blockquote>
+  <p>Blockquote</p>
+</blockquote>
+<p><code>Inline Code</code></p>
+<div class="highlight highlight-source-python"><pre><span class="pl-k">def</span> <span class="pl-en">hello_world</span>():
+    <span class="pl-en">print</span>(<span class="pl-s">"Hello, world!"</span>)</pre></div>
+<ul>
+  <li>Unordered List Item 1</li>
+  <li>Unordered List Item 2
+    <ul>
+      <li>Unordered Sublist Item 1</li>
+      <li>Unordered Sublist Item 2</li>
+    </ul>
+  </li>
+</ul>
+<ol>
+  <li>Ordered List Item 1</li>
+  <li>Ordered List Item 2
+    <ol>
+      <li>Ordered Sublist Item 1</li>
+      <li>Ordered Sublist Item 2</li>
+    </ol>
+  </li>
+</ol>
+<p>Horizontal Rule</p>
+<hr>
+<p><a rel="nofollow" href="https://www.example.com">Link Text</a></p>
+<p><a rel="nofollow" href="https://www.example.com">https://www.example.com</a></p>
+<p><a href="https://camo.githubusercontent.com/ac28190b3bdb446d46b2760854ecec42927bd2ae802d0729c6b0e72449b56082/68747470733a2f2f6769746875622e6769746875626173736574732e636f6d2f696d616765732f6d6f64756c65732f6c6f676f735f706167652f4769744875622d4d61726b2e706e67" rel="noopener noreferrer nofollow"><img style="max-width: 100%;" data-canonical-src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="Alt Text" src="https://camo.githubusercontent.com/ac28190b3bdb446d46b2760854ecec42927bd2ae802d0729c6b0e72449b56082/68747470733a2f2f6769746875622e6769746875626173736574732e636f6d2f696d616765732f6d6f64756c65732f6c6f676f735f706167652f4769744875622d4d61726b2e706e67"></a></p>
+<p>Table</p>
+<table>
+  <thead>
+  <tr>
+    <th>Column 1</th>
+    <th>Column 2</th>
+    <th>Column 3</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Cell 1</td>
+    <td>Cell 2</td>
+    <td>Cell 3</td>
+  </tr>
+  <tr>
+    <td>Cell 4</td>
+    <td>Cell 5</td>
+    <td>Cell 6</td>
+  </tr>
+  </tbody>
+</table>
+
+<p>Here is an HTML tag: <span>This is red text</span></p>
+<ul>
+  <li>[x] Task List Item 1</li>
+  <li>[ ] Task List Item 2</li>
+</ul>
+<p>😄 &lt;-- This is an emoji</p>
+<p>Here is a URL that will not be a link: <code>https://www.example.com</code></p>
+<p>Escaping a special character: *This will not be italic*</p>
+<p>Here is a footnote<sup><a data-footnote-ref="" id="user-content-fnref-1" href="#fn-1">1</a></sup>.</p>
+<section data-footnotes="">
+  <ol>
+    <li id="user-content-fn-1">
+      <p>This is the footnote. <a aria-label="Back to reference 1" data-footnote-backref="" href="#fnref-1">↩</a></p>
+    </li>
+  </ol>
+</section>
+"
+`;

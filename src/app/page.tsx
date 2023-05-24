@@ -67,7 +67,7 @@ export default function Home() {
                   {longRendering ? <Spinner /> : null}
                 </div>
 
-                <Button className="min-w-[4rem]" onClick={window.print}>
+                <Button className="min-w-[4rem]" onClick={() => window.print()}>
                   Print
                 </Button>
               </div>
