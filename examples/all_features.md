@@ -36,7 +36,7 @@ Horizontal Rule
 
 ---
 
-[Link Text](https://www.example.com)
+[example.com](https://www.example.com)
 
 https://www.example.com
 
@@ -51,7 +51,11 @@ Table
 
 <!-- This is a comment -->
 
+<!--
+Not supported by GH
+
 Here is an HTML tag: <span style="color:red;">This is red text</span>
+-->
 
 - [x] Task List Item 1
 - [ ] Task List Item 2
