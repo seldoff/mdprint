@@ -69,6 +69,7 @@ export default function Home() {
                 <Button className="min-w-[4rem]" onClick={() => window.print()}>
                   Print
                 </Button>
+                {/* TODO Save to HTML */}
               </div>
               <div className={cn("overflow-y-scroll", { "opacity-30": longRendering })}>
                 <Preview />
