@@ -2,7 +2,6 @@ import { atom, map, MapStore } from "nanostores"
 import { createContext } from "react"
 import ky from "ky"
 import { toastError } from "@/components/toast"
-import DOMPurify from "dompurify"
 
 export type State = {
   md: string
@@ -45,8 +44,7 @@ export async function processMd(md: string) {
       })
       .text()
 
-    const sanitized = DOMPurify.sanitize(renderedMd)
-    state.setKey("renderedMd", sanitized)
+    state.setKey("renderedMd", renderedMd)
   } catch (e) {
     toastError("Can't render markdown at the moment: GitHub returned an error.")
     console.error(e)
