@@ -7,10 +7,3 @@
     display: none !important;
   }
 }
-
-@layer base {
-  ol,
-  ul {
-    list-style: unset;
-  }
-}

@@ -1,6 +1,5 @@
 "use client"
 import { ErrorBoundary } from "react-error-boundary"
-import "./md.css"
 import { Editor } from "@/components/Editor"
 import { toastError } from "@/components/toast"
 import { processMd, renderingMdTooLong, state, StateContext } from "@/state"

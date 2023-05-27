@@ -20,6 +20,7 @@ module.exports = {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "@typescript-eslint/switch-exhaustiveness-check": "error",
+    "@typescript-eslint/ban-ts-comment": "off",
   },
   ignorePatterns: ["*.js", "out/", "node_modules/", ".next/"],
 }
