@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@nanostores/react": "0.6.0",
+    "@next/bundle-analyzer": "13.4.4",
     "@primer/css": "21.0.1",
     "@testing-library/jest-dom": "5.16.5",
     "@total-typescript/ts-reset": "0.4.2",
