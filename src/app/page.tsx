@@ -8,16 +8,24 @@ import { useStore } from "@nanostores/react"
 import { Spinner } from "@/components/Spinner"
 import cn from "classnames"
 import { Button, FilePicker } from "@/components/Button"
-import { useCallback, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { isServer } from "@/utils"
+import { trackEvent } from "@/analytics"
 
 if (!isServer) {
   window.addEventListener("error", (e) => toastError(e.message))
   window.addEventListener("unhandledrejection", (e) => toastError(e.reason))
+  window.addEventListener("afterprint", () => trackEvent("afterprint"))
 }
 
 // noinspection JSUnusedGlobalSymbols
 export default function Home() {
+  useEffect(() => {
+    if (!isServer) {
+      trackEvent("pageview")
+    }
+  }, [])
+
   const longRendering = useStore(renderingMdTooLong)
 
   const [editorKey, setEditorKey] = useState(0)
@@ -48,7 +56,7 @@ export default function Home() {
                 <span className="grow text-xl text-gray-700 uppercase">Markdown</span>
 
                 <FilePicker onFilePicked={handleFile}>
-                  <Button>Open File</Button>
+                  <Button event="open_file">Open File</Button>
                 </FilePicker>
               </div>
               <Editor key={editorKey} />
@@ -66,7 +74,7 @@ export default function Home() {
                   {longRendering ? <Spinner /> : null}
                 </div>
 
-                <Button className="min-w-[4rem]" onClick={() => window.print()}>
+                <Button className="min-w-[4rem]" onClick={() => window.print()} event="print">
                   Print
                 </Button>
                 {/* TODO Save to HTML */}

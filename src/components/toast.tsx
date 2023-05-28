@@ -1,4 +1,5 @@
 import toast, { toastConfig } from "react-simple-toasts"
+import { trackEvent } from "@/analytics"
 
 toastConfig({
   duration: 10_000,
@@ -7,6 +8,8 @@ toastConfig({
 })
 
 export function toastError(error: unknown) {
+  trackEvent("error", { error })
+
   const close = toast(String(error), {
     render: (msg) => (
       <div

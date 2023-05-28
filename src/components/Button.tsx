@@ -1,9 +1,28 @@
-import { ButtonHTMLAttributes, FC, PropsWithChildren, useCallback, useRef, useState } from "react"
+import {
+  ButtonHTMLAttributes,
+  FC,
+  MouseEventHandler,
+  PropsWithChildren,
+  useCallback,
+  useRef,
+  useState,
+} from "react"
 import cn from "classnames"
 import { assertExists } from "@/utils"
+import { trackEvent } from "@/analytics"
 
-export const Button: FC<ButtonHTMLAttributes<HTMLButtonElement>> = (props) => {
-  const { className: _, ...propsWoCN } = props
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & { event: string }
+
+export const Button: FC<ButtonProps> = (props) => {
+  const { className: _, event, onClick, ...rest } = props
+
+  const handleClick = useCallback<MouseEventHandler<HTMLButtonElement>>(
+    (e) => {
+      trackEvent(event + "_click")
+      onClick?.(e)
+    },
+    [event, onClick],
+  )
 
   return (
     <button
@@ -12,7 +31,8 @@ export const Button: FC<ButtonHTMLAttributes<HTMLButtonElement>> = (props) => {
         "text-sm text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700",
         "px-3 py-1 cursor-pointer rounded",
       )}
-      {...propsWoCN}
+      onClick={handleClick}
+      {...rest}
     >
       {props.children}
     </button>
