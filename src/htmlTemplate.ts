@@ -20,9 +20,12 @@ function getMdStyles(): string {
   return `<style>${combined}</style>`
 }
 
+const canonicalUrl = process.env["NEXT_PUBLIC_CANONICAL_URL"] ?? "magic"
+
 const htmlTemplate = template
   .replace("{styles}", getMdStyles())
   .replace("{iframeResizer}", iframeResizer)
+  .replace("{generatedBy}", canonicalUrl)
 
 export const renderFullHtml = (content: string): string =>
   htmlTemplate.replace("{content}", content)

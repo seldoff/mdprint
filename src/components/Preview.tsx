@@ -10,19 +10,15 @@ export const Preview = () => {
   const empty = renderedMd === ""
   const html = useMemo(() => (empty ? "" : renderFullHtml(renderedMd)), [empty, renderedMd])
 
-  return (
-    <div className="p-3">
-      {empty ? (
-        // gray-400+opacity to match Editor's placeholder color
-        <span className="text-gray-400 opacity-80">Rendered Markdown will appear here</span>
-      ) : (
-        <IframeResizer
-          srcDoc={html}
-          checkOrigin={false}
-          // https://github.com/davidjbradshaw/iframe-resizer-react#typical-setup
-          style={{ width: "1px", minWidth: "100%" }}
-        />
-      )}
-    </div>
+  return empty ? (
+    // gray-400+opacity to match Editor's placeholder color
+    <span className="p-3 text-gray-400 opacity-80">Rendered Markdown will appear here</span>
+  ) : (
+    <IframeResizer
+      srcDoc={html}
+      checkOrigin={false}
+      // https://github.com/davidjbradshaw/iframe-resizer-react#typical-setup
+      style={{ width: "1px", minWidth: "100%" }}
+    />
   )
 }
