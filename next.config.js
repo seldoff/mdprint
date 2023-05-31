@@ -1,9 +1,12 @@
 import WithBundleAnalyzer from "@next/bundle-analyzer"
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+let nextConfig = {
   output: "export",
 }
 
-module.exports =
-  process.env.ANALYZE_BUNDLE === "true" ? WithBundleAnalyzer()(nextConfig) : nextConfig
+if (process.env.ANALYZE_BUNDLE === "true") {
+  nextConfig = WithBundleAnalyzer()(nextConfig)
+}
+
+module.exports = nextConfig
