@@ -14,6 +14,7 @@ import { Button, FilePicker } from "@/components/Button"
 import { useCallback, useEffect, useState } from "react"
 import { isServer } from "@/utils"
 import { trackEvent } from "@/analytics"
+import { renderFullHtml } from "@/htmlTemplate"
 
 if (!isServer) {
   window.addEventListener("error", (e) => toastError(e.message))
@@ -35,6 +36,15 @@ export default function Home() {
   const handleFile = useCallback(async (content: string) => {
     await processMd(content)
     setEditorKey((key) => key + 1) // Remount the editor
+  }, [])
+
+  const save = useCallback(() => {
+    const a = document.createElement("a")
+    a.href = `data:text/plain;charset=utf-8,${encodeURIComponent(
+      renderFullHtml(state.get().renderedMd),
+    )}`
+    a.download = "mdprint.html"
+    a.click()
   }, [])
 
   return (
@@ -77,10 +87,14 @@ export default function Home() {
                   {longRendering ? <Spinner /> : null}
                 </div>
 
-                <Button className="min-w-[4rem]" onClick={() => window.print()} event="print">
-                  Print
-                </Button>
-                {/* TODO Save to HTML */}
+                <div className="flex gap-2">
+                  <Button onClick={() => window.print()} event="print">
+                    Print
+                  </Button>
+                  <Button onClick={save} event="save_html">
+                    Save HTML
+                  </Button>
+                </div>
               </div>
               <div className={cn("overflow-y-scroll", { "opacity-30": longRendering })}>
                 <Preview />

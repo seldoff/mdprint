@@ -29,7 +29,7 @@ export const Button: FC<ButtonProps> = (props) => {
       className={cn(
         props.className,
         "text-sm text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700",
-        "px-3 py-1 cursor-pointer rounded",
+        "px-3 py-1 cursor-pointer rounded min-w-[4rem]",
       )}
       onClick={handleClick}
       {...rest}
