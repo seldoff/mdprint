@@ -1,4 +1,4 @@
-import WithBundleAnalyzer from "@next/bundle-analyzer"
+const WithBundleAnalyzer = require("@next/bundle-analyzer")
 
 /** @type {import('next').NextConfig} */
 let nextConfig = {
