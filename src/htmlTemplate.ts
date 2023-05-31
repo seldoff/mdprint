@@ -24,6 +24,5 @@ const htmlTemplate = template
   .replace("{styles}", getMdStyles())
   .replace("{iframeResizer}", iframeResizer)
 
-export const renderFullHtml = (content: string): string => {
-  return htmlTemplate.replace("{content}", content)
-}
+export const renderFullHtml = (content: string): string =>
+  htmlTemplate.replace("{content}", content)
