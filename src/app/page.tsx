@@ -1,3 +1,6 @@
+// TODO wrap long lines when print
+// TODO why no background for code blocks?
+
 "use client"
 import { ErrorBoundary } from "react-error-boundary"
 import { Editor } from "@/components/Editor"
