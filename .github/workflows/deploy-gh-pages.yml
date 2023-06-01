@@ -73,7 +73,7 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
         env:
-          NEXT_PUBLIC_CANONICAL_URL: ${{ env.CANONICAL_URL }}
+          NEXT_PUBLIC_CANONICAL_URL: ${{ vars.CANONICAL_URL }}
           NEXT_PUBLIC_MIXPANEL_TOKEN: ${{ secrets.MIXPANEL_TOKEN }}
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Static HTML export with Next.js
