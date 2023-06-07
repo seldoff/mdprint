@@ -1,5 +1,6 @@
 import "./globals.css"
 import { ReactNode } from "react"
+import Script from 'next/script'
 
 // noinspection JSUnusedGlobalSymbols
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -7,7 +8,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en">
       <body>
         {children}
-        <script src="https://mxpnl.com/tracker.js"></script>
+        <Script src="https://mxpnl.com/tracker.js"></Script>
       </body>
     </html>
   )
