@@ -5,7 +5,10 @@ import { ReactNode } from "react"
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+        <script src="https://mxpnl.com/tracker.js"></script>
+      </body>
     </html>
   )
 }
